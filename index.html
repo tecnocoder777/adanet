@@ -2,41 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Ad</title>
+
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 html, body {
-  width: 468px;
-  height: 60px;
-  overflow: hidden;
-  background: transparent;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    background: transparent;
 }
-#ad-container {
-  width: 468px;
-  height: 60px;
-  overflow: hidden;
+
+#ad-wrapper {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#ad-content {
+    width: 468px;
+    height: 60px;
+    flex-shrink: 0;
+    transform-origin: center center;
 }
 </style>
 </head>
+
 <body>
 
-<div id="ad-container">
-  <script>
-    var atOptions = {
-      'key': '35d8ecdc5c95005c165a56ca79b78d10',
-      'format': 'iframe',
-      'height': 60,
-      'width': 468,
-      'params': {}
-    };
-  </script>
-  <script src="https://www.highrevenueformat.com/35d8ecdc5c95005c165a56ca79b78d10/invoke.js"></script>
+<div id="ad-wrapper">
+    <div id="ad-content">
+        <script>
+        var atOptions = {
+            'key': '35d8ecdc5c95005c165a56ca79b78d10',
+            'format': 'iframe',
+            'height': 60,
+            'width': 468,
+            'params': {}
+        };
+        </script>
+        <script src="https://www.highrevenueformat.com/35d8ecdc5c95005c165a56ca79b78d10/invoke.js"></script>
+    </div>
 </div>
+
+<script>
+function fitAd() {
+    var content = document.getElementById('ad-content');
+    var scale = Math.min(1, window.innerWidth / 468);
+    content.style.transform = 'scale(' + scale + ')';
+}
+
+fitAd();
+window.addEventListener('resize', fitAd);
+</script>
 
 </body>
 </html>
